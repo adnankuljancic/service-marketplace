@@ -1,13 +1,12 @@
 import "./App.css";
-import Button from "react-bootstrap/Button";
+import MainNavbar from "./components/MainNavbar";
 
 function App() {
   return (
     <div className="App">
-      <h1>Service Marketplace</h1>
-      <Button variant="primary">Button</Button>
+      <MainNavbar />
     </div>
   );
-}
+} 
 
 export default App;
