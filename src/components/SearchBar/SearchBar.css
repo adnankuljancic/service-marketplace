@@ -1,0 +1,11 @@
+.btn {
+  padding: 10px;
+  border: 1px solid grey;
+  vertical-align: top;
+  border-radius: 0px;
+}
+
+.input_field {
+  padding: 10px;
+  border: 1px solid grey;
+}

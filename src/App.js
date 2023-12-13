@@ -1,6 +1,6 @@
 import "./App.css";
-import MainNavbar from "./components/MainNavbar";
-import SearchBar from "./components/SearchBar";
+import MainNavbar from "./components/MainNavbar/MainNavbar";
+import SearchBar from "./components/SearchBar/SearchBar";
 
 function App() {
   return (

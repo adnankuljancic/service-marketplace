@@ -1,9 +1,10 @@
 import Button from "react-bootstrap/Button";
+import './SearchBar.css';
 function SearchBar() {
   return (
     <>
-      <input></input>
-      <Button>Search</Button>
+      <input className="input_field"></input>
+      <Button className="btn">Search</Button>
     </>
   );
 }
