@@ -3,12 +3,12 @@
   border: 1px solid grey;
   vertical-align: top;
   border-radius: 0px;
-  width: 100px;
+  width: 25vh;
   background-color: green;
 }
 
 .input_field {
   padding: 10px;
   border: 1px solid grey;
-  width: 400px;
+  width: 100vh;
 }
