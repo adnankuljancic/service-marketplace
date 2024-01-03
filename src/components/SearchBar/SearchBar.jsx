@@ -4,7 +4,7 @@ function SearchBar() {
   return (
     <>
       <input className="input_field"></input>
-      <Button className="btn">Search</Button>
+      <Button className="search-btn">Search</Button>
     </>
   );
 }
