@@ -25,7 +25,7 @@ function MainNavbar() {
             <Nav.Link as={Link} to="/login">
               Log in
             </Nav.Link>
-            <Nav.Link as={Link} to="/">
+            <Nav.Link as={Link} to="/signup">
               Sign up
             </Nav.Link>
           </Nav>
