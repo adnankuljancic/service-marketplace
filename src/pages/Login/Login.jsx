@@ -1,12 +1,40 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
+import { useState } from "react";
 
 function LoginPage() {
-  function handleSubmit(event) {
+  const [enteredEmail, setEnteredEmail] = useState("");
+  const [enteredPassword, setEnteredPassword] = useState("");
+
+  async function handleSubmit(event) {
     event.preventDefault();
-    console.log("Submitted!");
+
+    const formData = {
+      email: enteredEmail,
+      password: enteredPassword,
+    };
+
+    try {
+      const apiUrl = "https://localhost:7231/api/Auth/login";
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to submit form");
+      }
+
+      console.log("API response: ", response.text());
+    } catch (error) {
+      console.error("API Error: ", error.message);
+    }
   }
+
   return (
     <div className="d-flex justify-content-center align-items-center p-5">
       <Form className="rounded p-3 p-lg-4 border" onSubmit={handleSubmit}>
@@ -16,7 +44,12 @@ function LoginPage() {
           controlId="formEmail"
           className="mb-2"
         >
-          <Form.Control type="email" placeholder="Enter email" />
+          <Form.Control
+            type="text"
+            placeholder="Enter email"
+            value={enteredEmail}
+            onChange={(e) => setEnteredEmail(e.target.value)}
+          />
           <Form.Text className="text-muted">
             We'll never share your email with anyone else.
           </Form.Text>
@@ -27,7 +60,12 @@ function LoginPage() {
           controlId="formPassword"
           className="mb-2"
         >
-          <Form.Control type="text" placeholder="Enter password" />
+          <Form.Control
+            type="password"
+            placeholder="Enter password"
+            value={enteredPassword}
+            onChange={(e) => setEnteredPassword(e.target.value)}
+          />
         </FloatingLabel>
         <div className="d-grid my-4">
           <Button variant="primary" type="submit">
