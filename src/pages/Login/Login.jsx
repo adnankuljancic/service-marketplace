@@ -29,7 +29,10 @@ function LoginPage() {
         throw new Error("Failed to submit form");
       }
 
-      console.log("API response: ", response.text());
+      let token = await response.text();
+      localStorage.setItem('jwt', token)
+
+      console.log("API response: ", token);
     } catch (error) {
       console.error("API Error: ", error.message);
     }
