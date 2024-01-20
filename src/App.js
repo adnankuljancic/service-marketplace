@@ -1,38 +1,42 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import MainNavbar from "./components/MainNavbar/MainNavbar";
 import Homepage from "./pages/Home/Home";
 import LoginPage from "./pages/Login/Login";
 import SignupPage from "./pages/Signup/Signup";
+import UserContext from "./context/AuthContext";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState(false);
   useEffect(() => {
-    const jwt = localStorage.getItem('jwt');
-    if(jwt) {
-      setIsLoggedIn(true);
+    const jwt = localStorage.getItem("jwt");
+    if (jwt) {
+      setUser(true);
     }
-  });
+  }, []);
 
   const login = () => {
     // Update the state when the user logs in
-    setIsLoggedIn(true);
+    setUser(true);
   };
 
   const logout = () => {
     // Update the state when the user logs out
-    setIsLoggedIn(false);
+    localStorage.clear();
+    setUser(false);
   };
   return (
     <BrowserRouter>
-      <MainNavbar isLoggedIn={isLoggedIn}/>
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignupPage/>} />
-      </Routes>
-    </BrowserRouter> 
+      <UserContext.Provider value={{ user, login, logout }}>
+        <MainNavbar />
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+        </Routes>
+      </UserContext.Provider>
+    </BrowserRouter>
   );
 }
 

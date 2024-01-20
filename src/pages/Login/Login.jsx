@@ -1,9 +1,14 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import UserContext from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
+  const { login } = useContext(UserContext);
+  const navigate = useNavigate();
+
   const [enteredEmail, setEnteredEmail] = useState("");
   const [enteredPassword, setEnteredPassword] = useState("");
 
@@ -30,7 +35,9 @@ function LoginPage() {
       }
 
       let token = await response.text();
-      localStorage.setItem('jwt', token)
+      localStorage.setItem("jwt", token);
+      login();
+      navigate('/');
 
       console.log("API response: ", token);
     } catch (error) {

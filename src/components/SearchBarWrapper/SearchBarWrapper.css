@@ -1,3 +1,8 @@
 .sb-wrapper {
     height: 60vh;
 }
+
+.title {
+    font-size: 70px;
+    color: darkslategray;
+}
