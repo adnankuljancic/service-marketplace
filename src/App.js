@@ -6,6 +6,7 @@ import Homepage from "./pages/Home/Home";
 import LoginPage from "./pages/Login/Login";
 import SignupPage from "./pages/Signup/Signup";
 import UserContext from "./context/AuthContext";
+import ServiceDetails from "./pages/ServiceDetails/ServiceDetails";
 
 function App() {
   const [user, setUser] = useState(false);
@@ -34,6 +35,7 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
+          <Route path="/service/:id" element={<ServiceDetails />} />
         </Routes>
       </UserContext.Provider>
     </BrowserRouter>

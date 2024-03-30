@@ -26,7 +26,7 @@ function MainNavbar() {
               </Nav.Link>
               {user ? (
                 <Nav.Link as={Link} to="/" onClick={logout}>
-                  User
+                  Adnan
                 </Nav.Link>
               ) : (
                 <>
